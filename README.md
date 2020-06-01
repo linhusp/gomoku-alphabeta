@@ -1,5 +1,5 @@
-# Gomoku AI
-> Gomoku AI using minimax with alpha-beta prunning
+# gomoku-alphabeta
+> An Gomoku AI using minimax algorithm and alpha-beta prunning
 
 <p align="center">
     <img width="1000" src="./screenshot.png">
