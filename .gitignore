@@ -1,0 +1,7 @@
+# byte-compiled
+__pycache__/
+test.py
+
+# vim
+.vim
+.netrwhist
