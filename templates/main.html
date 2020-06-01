@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>Caro</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block content %}
+<section id="board" class="black">
+    <div class="row">
+        <div class="col-lg">
+            <table class="desk"></table>
+        </div>
+        <div class="col-lg">
+            <div class="float-left">
+                <table class="table info">
+                    <th>Information</th>
+                    <tr>
+                        <td>
+                            <input type="radio" name="choice" checked> White&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="choice" checked> Black
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-action="init" class="btn btn-outline-dark">Clear</button>
+                        </td>
+                    </tr>
+                </table>
+                <p></p>
+                <div class="alert alert-danger d-none"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    var $SCRIPT_ROOT = {{request.script_root | tojson | safe }};
+    function accessData(action, data, callback) {
+        $.ajax({
+            type: "GET",
+            url: $SCRIPT_ROOT + "/" + action,
+            data: data,
+            dataType: "JSON",
+            success: callback,
+            error: function (jqXHR) {
+                alert("Error: " + jqXHR.status);
+            }
+        });
+    }
+</script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
